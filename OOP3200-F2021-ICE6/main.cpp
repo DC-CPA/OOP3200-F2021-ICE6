@@ -5,6 +5,7 @@
 
 #include "GameObject.h"
 #include "Vector3D.h"
+#include <map>
 
 
 static void BuildGameObjects(std::vector<GameObject*>& game_objects, const int num = 2)
@@ -29,6 +30,8 @@ static void BuildGameObjects(std::vector<GameObject*>& game_objects, const int n
 
 static void CompareGameObjects(GameObject* object1, GameObject* object2)
 {
+	
+
 	std::cout << std::fixed << std::setprecision(3);
 	std::cout << "Magnitude of first gameObject is: " << object1->GetPosition().GetMagnitude() << std::endl;
 	std::cout << "Magnitude of second gameObject is: " << object2->GetPosition().GetMagnitude() << std::endl;
@@ -51,7 +54,14 @@ static void CompareGameObjects(GameObject* object1, GameObject* object2)
 
 int main()
 {
-	std::vector<GameObject*> gameObjects;
+	//map made up of key value pairs, the key here is a string
+	//									and the value is a GameObject
+	std::map<std::string, GameObject> gameObjects;
+
+
+
+
+	/*std::vector<GameObject*> gameObjects;
 
 	int num_of_GO;
 	std::cout << "How Many Game Objects do you need?: ";
@@ -71,6 +81,6 @@ int main()
 	std::cout << "\n--------------------------------------------------------------" << std::endl;
 	
 	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
-	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
+	CompareGameObjects(gameObjects[index1], gameObjects[index2]);*/
 }
 

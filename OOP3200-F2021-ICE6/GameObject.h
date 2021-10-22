@@ -3,6 +3,7 @@
 #define __GAME_OBJECT__
 
 #include "Vector2D.h"
+#include <string>
 
 class GameObject
 {
@@ -11,6 +12,9 @@ public:
 	GameObject();
 	GameObject(int id, float x, float y);
 	GameObject(int id, const Vector2D<float>& position);
+	GameObject(std::string name, int id, float x, float y);
+	GameObject(std::string name, int id, const Vector2D<float>& position);
+
 
 	// Rule of Three
 	~GameObject(); // Destructor
@@ -20,17 +24,20 @@ public:
 	// Accessors
 	Vector2D<float> GetPosition() const;
 	int GetID() const;
+	std::string GetName() const;
 	
 	// Mutators
 	void SetPosition(float x, float y);
 	void SetPosition(const Vector2D<float>& new_position);
 	void SetID(int id);
+	void SetName(const std::string& name);
 
 	// Utility Functions
 	std::string ToString() const;
 	
 private:
 	int m_id{};
+	std::string m_name;
 	Vector2D<float> m_position;
 };
 
