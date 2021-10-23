@@ -114,6 +114,8 @@ private:
 	T m_y{};
 };
 
+
+
 /* Implementation section */
 template <class T>
 Vector2D<T>::Vector2D(T x, T y) : m_x(x), m_y(y)
@@ -122,9 +124,7 @@ Vector2D<T>::Vector2D(T x, T y) : m_x(x), m_y(y)
 
 template <class T>
 Vector2D<T>::~Vector2D()
-{
-	
-}
+= default;
 
 template <class T>
 Vector2D<T>::Vector2D(const Vector2D& rhs)
@@ -283,7 +283,7 @@ template <class T>
 Vector2D<T> Vector2D<T>::operator--(int)
 {
 	Vector2D vector = *this;
-	--* this;
+		*this;
 	return vector;
 }
 
@@ -335,13 +335,13 @@ std::string Vector2D<T>::ToString(int precision) const
 }
 
 template <class T>
-float Vector2D<T>::GetMagnitude() const
+auto Vector2D<T>::GetMagnitude() const -> float
 {
 	return Mathf::Sqrt(static_cast<float>(static_cast<double>(GetX()) * static_cast<double>(GetX()) + static_cast<double>(GetY()) * static_cast<double>(GetY())));
 }
 
 template <class T>
-float Vector2D<T>::GetSqrMagnitude() const
+auto Vector2D<T>::GetSqrMagnitude() const -> float
 {
 	return static_cast<float>(static_cast<double>(GetX()) * static_cast<double>(GetX()) + static_cast<double>(GetY()) * static_cast<double>(GetY()));
 }
@@ -518,5 +518,6 @@ Vector2D<T> Vector2D<T>::Max(const Vector2D& lhs, const Vector2D& rhs)
 {
 	return Vector2D(Mathf::Max(lhs.GetX(), rhs.GetX()), Mathf::Max(lhs.GetY(), rhs.GetY()));
 }
+
 #endif /* defined (__VECTOR2D__) */
 

@@ -2,7 +2,7 @@
 
 #include <utility>
 
-GameObject::GameObject(): m_id(0),m_name("unknown"), m_position(Vector2D<float>())
+GameObject::GameObject(): m_name("unknown"), m_position(Vector2D<float>())
 {
 }
 
@@ -20,16 +20,24 @@ GameObject::GameObject(const int id, const Vector2D<float>& position)
 	SetPosition(position);
 }
 
-GameObject::GameObject(std::string name, const int id, const float x, const float y)
-	:m_id(id), m_name(std::move(name)), m_position(Vector2D<float>(x , y))
-{
+//GameObject::GameObject(const std::string& name, const int id, const float x, const float y)
+//{
+//	SetID(id);
+//	SetName(name);
+//	SetPosition(x,y);
+//}
 
+GameObject::GameObject(const std::string& name, const int id, const float x, const float y): name_(name) {
+	SetID(id);
+	SetName(name);
+	SetPosition(x, y);
 }
 
-GameObject::GameObject(std::string name, int id, const Vector2D<float>& position)
-	: m_id(id), m_name(std::move(name)), m_position(position)
+GameObject::GameObject(const std::string& name,const int id, const Vector2D<float>& position)
 {
-
+	SetID(id);
+	SetName(name);
+	SetPosition(position);
 }
 
 std::string GameObject::GetName() const
@@ -86,7 +94,16 @@ void GameObject::SetPosition(const Vector2D<float>& new_position)
 std::string GameObject::ToString() const
 {
 	std::string output_string;
-	output_string += "ID       : " + std::to_string(GetID()) + "\n";
-	output_string += "Position : " + GetPosition().ToString() + "\n";
+	output_string += "ID	  : " + std::to_string(GetID()) + "\n";
+	output_string += "Name	  : " + GetName() + "\n";
+	output_string += "Position: " + GetPosition().ToString() + "\n";
 	return output_string;
+
+	
+}
+
+std::string GameObject::ToFile() const
+{
+	return std::to_string(GetID()) + " " + GetName() + " " + GetPosition().ToString();
+	
 }

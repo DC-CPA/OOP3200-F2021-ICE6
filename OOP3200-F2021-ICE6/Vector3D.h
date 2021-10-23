@@ -55,39 +55,40 @@ private:
 
 /* Implementation Section */
 
+
 template <class T>
 Vector3D<T>::Vector3D(const T x, const T y, const T z) : m_x(x), m_y(y), m_z(z)
 {
 }
 
-template <class T>
-Vector3D<T>::Vector3D(const std::string& x, const std::string& y, const std::string& z)
-{
-	if(typeid(T) == typeid(int))
-	{
-		m_x = std::stoi(x);
-		m_y = std::stoi(y);
-		m_z = std::stoi(z);
-	}
-
-	if (typeid(T) == typeid(float))
-	{
-		m_x = std::stof(x);
-		m_y = std::stof(y);
-		m_z = std::stof(z);
-	}
-
-	if (typeid(T) == typeid(double))
-	{
-		m_x = std::stod(x);
-		m_y = std::stod(y);
-		m_z = std::stod(z);
-	}
-
-	assert((typeid(T) == typeid(double)) || (typeid(T) == typeid(float)) || (typeid(T) == typeid(int)), 
-		"error encountered");
-
-}
+//template <class T>
+//Vector3D<T>::Vector3D(const std::string& x, const std::string& y, const std::string& z)
+//{
+//	if (typeid(T) == typeid(int))
+//	{
+//		m_x = std::stoi(x);
+//		m_y = std::stoi(y);
+//		m_z = std::stoi(z);
+//	}
+//
+//	if (typeid(T) == typeid(float))
+//	{
+//		m_x = std::stof(x);
+//		m_y = std::stof(y);
+//		m_z = std::stof(z);
+//	}
+//
+//	if (typeid(T) == typeid(double))
+//	{
+//		m_x = std::stod(x);
+//		m_y = std::stod(y);
+//		m_z = std::stod(z);
+//	}
+//
+//	assert((typeid(T) == typeid(double)) || (typeid(T) == typeid(float)) || (typeid(T) == typeid(int)),
+//		"error encountered");
+//
+//}
 
 template <class T>
 Vector3D<T>::Vector3D(const Vector2D<float>& vector_2d)
